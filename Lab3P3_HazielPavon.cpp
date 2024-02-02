@@ -157,6 +157,8 @@ void ejercicio2()
 	bool numcorrecto = false;
 	int num = 0;
 	int pos; 
+	int contador = 0; 
+
 	// Validando el numero objetivo 
 	while (!numcorrecto) {
 		cout << "Ingrese el numero objetivo" << endl;
@@ -177,6 +179,11 @@ void ejercicio2()
 			encontrado = true;
 			pos = i;
 		}
+		else {
+			if (num > arreglo1[i]) {
+				contador++; 
+			}
+		}
 
 		if (i == 0) {
 			cout << "[" << arreglo1[i] << ",";
@@ -190,12 +197,11 @@ void ejercicio2()
 	}
 	// ultima validacion 
 	if (encontrado) {
-		cout << "El numero: " << num << ",se encuentra en la posicion: " << pos << ", del arreglo." << endl;
+		cout << "El numero: " << num << ", se encuentra en la posicion: " << pos << ", del arreglo." << endl;
 	}
 	else {
-		cout << "El numero no fue encontrado" << endl;
+		cout << "El numero: " << num << ", se deberia encontrar en la posicion: " << contador << ", del arreglo." << endl;
 	}
-
 	delete[] arreglo1;
 }
 int main()
