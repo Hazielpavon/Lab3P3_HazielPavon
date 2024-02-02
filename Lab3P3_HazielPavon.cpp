@@ -1,20 +1,90 @@
-// Lab3P3_HazielPavon.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+using namespace std;
+void ejercicio1() {
+    int* arreglo1 = nullptr;
+    bool tamcorrecto = false;
+    int tam = 0;
 
+    while (!tamcorrecto) {
+        cout << "Ingrese el tamano" << endl;
+        tam = 0;
+        cin >> tam;
+        if (tam >= 5) {
+            tamcorrecto = true;
+        }
+        else {
+            cout << "El tamano debe ser mayor a 5" << endl;
+        }
+    }
+
+    arreglo1 = new int[tam];
+
+    bool vali = false;
+    int num;
+
+    for (int i = 0; i < tam; i++) {
+        vali = false;
+        while (!vali) {
+            cout << "Ingrese el numero para almacenar dentro del arreglo" << endl;
+            num = 0;
+            cin >> num;
+            if (num > 0 && num < 16) {
+                arreglo1[i] = num;
+                vali = true;
+            }
+            else {
+                cout << "El numero debe ser entre 1 y 15" << endl;
+            }
+        }
+    }
+    int contador = 0;
+    int* arreglo2 = NULL; 
+    arreglo2 = new int[tam]; 
+    for (int i = 0; i < tam; i++) {
+        if (arreglo1[i] != 7) {
+            arreglo2[contador] = arreglo1[i];
+            contador++;
+        }
+    }
+    while (contador < tam) {
+        arreglo2[contador] = 7;
+        contador++;
+    }
+    for (int i = 0; i < tam; i++)
+    {
+        cout << arreglo2[i] << endl; 
+    }
+
+
+    delete[] arreglo1;
+    delete[] arreglo2;
+}
+void ejercicio2() {
+
+}
 int main()
 {
-    std::cout << "Hello World!\n";
+	bool seguir = true;
+	while (seguir) {
+		cout << "Ingrese una opcion" << endl;
+		cout << "1. Primer ejercicio" << endl;
+		cout << "2. Segunfo ejercicio" << endl;
+		int op;
+		cin >> op;
+		switch (op) {
+		case 1:
+			ejercicio1();
+			break;
+		case 2:
+
+			break;
+		case 3:
+			seguir = false;
+			break;
+		default:
+			cout << "Ingrese una opcion valida" << endl;
+			break;
+		}
+	}
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
